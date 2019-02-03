@@ -9,7 +9,7 @@ module Exercise
           array
           .select { |film| film['country'].to_s.split(',').size > 1 && film['rating_kinopoisk'].to_f.positive? }
           .reduce(rating: 0.0, qty: 0) do |acc, movie|
-            {rating: acc[:rating] + movie['rating_kinopoisk'].to_f, qty: acc[:qty] + 1}
+            { rating: acc[:rating] + movie['rating_kinopoisk'].to_f, qty: acc[:qty] + 1 }
           end
 
         summary[:rating] / summary[:qty]
