@@ -15,7 +15,7 @@ module Inatra
     end
 
     def method_missing(method_name, *args, &block)
-      path = args.first.to_s
+      path = args.first.to_sym
       register_route(method_name, path, block)
     end
 
@@ -27,7 +27,7 @@ module Inatra
 
     def register_route(verb, path, deferred)
       @routes[verb] ||= {}
-      @routes[verb][path.to_sym] = deferred
+      @routes[verb][path] = deferred
     end
 
     def response(verb, path)
